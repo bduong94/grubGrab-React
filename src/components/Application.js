@@ -1,4 +1,3 @@
-import { meta } from "eslint-plugin-node/lib/rules/callback-return";
 import React from "react";
 import CartItemList from "./CartItemList";
 import FoodItemList from "./FoodItemList";
