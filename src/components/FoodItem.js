@@ -12,7 +12,23 @@ export default function FoodItem(props) {
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">{price_in_dollars}</li>
-          <li className="list-group-item">A second item</li>
+          <li className="list-group-item">
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">
+                  Quanity
+                </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Submit
+              </button>
+            </form>
+          </li>
           <li className="list-group-item">A third item</li>
         </ul>
         <div className="card-body"></div>
