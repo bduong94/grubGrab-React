@@ -1,6 +1,7 @@
 import React from "react";
 import CartItemList from "./CartItemList";
 import FoodItemList from "./FoodItemList";
+import Navbar from "./Navbar";
 
 const testData = [
   {
@@ -44,7 +45,7 @@ const testData = [
 export default function Application(props) {
   return (
     <>
-      <h1>Hello</h1>
+      <Navbar />
       <CartItemList />
       <FoodItemList FoodItems={testData} />
     </>
