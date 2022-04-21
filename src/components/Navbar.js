@@ -36,37 +36,17 @@ export default function Navbar(props) {
                   Pricing
                 </a>
               </li>
-              <li class="nav-item dropdown">
-                <a
+              <li class="cart nav-item dropdown">
+                <p
                   class="nav-link dropdown-toggle"
-                  href="#"
                   id="navbarDropdownMenuLink"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   Dropdown link
-                </a>
-                <ul
-                  class="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
+                </p>
+                <table class="dropdown-menu"></table>
               </li>
             </ul>
           </div>
