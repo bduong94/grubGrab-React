@@ -1,8 +1,20 @@
-import React from "react";
+import { React, useState } from "react";
 import FoodButton from "./FoodButton";
 
 export default function FoodItem(props) {
+  const [quantity, setQuantity] = useState(0);
   const price_in_dollars = `$${props.price_in_cents / 100}`;
+
+  //Helper Function
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const decreaseQuantity = () => {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+  };
   return (
     <div className="col-4">
       <div className="card">
@@ -15,22 +27,23 @@ export default function FoodItem(props) {
           <li className="list-group-item">Price: {price_in_dollars}</li>
           <form>
             <li className="list-group-item food-quantity">
-              <label for="exampleInputPassword1" class="form-label">
+              <label htmlFor="exampleInputPassword1" className="form-label">
                 Quanity:
               </label>
-              <div>
-                <FoodButton />
+              <div className="item-quantity">
+                <FoodButton buttonType="secondary" onClick={decreaseQuantity} />
                 <input
-                  type="number"
-                  class="form-control"
+                  type="text"
+                  inputMode="numeric"
+                  className="form-control"
                   id="exampleInputPassword1"
+                  value={quantity}
                 />
-
-                <FoodButton />
+                <FoodButton buttonType="dark" onClick={increaseQuantity} />
               </div>
             </li>
             <li className="list-group-item">
-              <button type="submit" class="btn btn-primary">
+              <button type="submit" className="btn btn-primary">
                 Submit
               </button>
             </li>

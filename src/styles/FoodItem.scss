@@ -6,3 +6,17 @@
     width: 30%;
   }
 }
+
+.item-quantity {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input {
+    text-align: center;
+  }
+}

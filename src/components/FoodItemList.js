@@ -14,8 +14,6 @@ export default function FoodItemList(props) {
     );
   });
 
-  console.log(FoodItemsArray);
-
   return (
     <div className="container">
       <div className="row">{FoodItemsArray}</div>
