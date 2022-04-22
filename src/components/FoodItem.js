@@ -1,4 +1,5 @@
 import React from "react";
+import FoodButton from "./FoodButton";
 
 export default function FoodItem(props) {
   const price_in_dollars = `$${props.price_in_cents / 100}`;
@@ -12,22 +13,28 @@ export default function FoodItem(props) {
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">Price: {price_in_dollars}</li>
-          <li className="list-group-item">
-            <form className="food-quantity">
+          <form>
+            <li className="list-group-item food-quantity">
               <label for="exampleInputPassword1" class="form-label">
                 Quanity:
               </label>
-              <input
-                type="number"
-                class="form-control"
-                id="exampleInputPassword1"
-              />
+              <div>
+                <FoodButton />
+                <input
+                  type="number"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                />
+
+                <FoodButton />
+              </div>
+            </li>
+            <li className="list-group-item">
               <button type="submit" class="btn btn-primary">
                 Submit
               </button>
-            </form>
-          </li>
-          <li className="list-group-item">A third item</li>
+            </li>
+          </form>
         </ul>
       </div>
     </div>
