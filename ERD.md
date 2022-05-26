@@ -29,6 +29,7 @@
 - category_id INTEGER REFERENCES roles(id) ON DELETE CASCADE,
 - name VARCHAR(50) NOT NULL,
 - price INTEGER NOT NULL,
+- description TEXT,
 - image_url TEXT,
 
 ## order_histories
@@ -38,10 +39,21 @@
 - order_date TIMESTAMP NOT NULL
 - completed_date TIMESTAMP NOT NULL
 
-## order_history_menu_item_bridge
+## order_histories_menu_items_bridge
 
 - id SERIAL PRIMARY NOT NULL,
 - order_history_id INTEGER REFERENCES order_histories(id) ON DELETE CASCADE
+- menu_item_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE,
+
+## ingredients
+
+- id SERIAL PRIMARY NOT NULL,
+- name VARCHAR(50) NOT NULL
+
+## ingredients_menu_items_bridge
+
+- id SERIAL PRIMARY NOT NULL,
+- ingredient_id INTEGER REFERENCES ingredients(id) ON DELETE CASCADE
 - menu_item_id INTEGER REFERENCES menu_items(id) ON DELETE CASCADE,
 
 ## payment_details
