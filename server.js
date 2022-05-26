@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const compression = require("compression");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
@@ -9,6 +10,8 @@ const path = require("path");
 const PORT = process.env.PORT || 8080;
 const app = express();
 const dev = app.get("env") !== "production";
+
+app.use(cors());
 
 //If not in development
 if (!dev) {
