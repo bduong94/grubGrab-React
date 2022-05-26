@@ -1,0 +1,19 @@
+# GrubGrab ERD
+
+## users
+
+- id SERIAL PRIMARY NOT NULL
+- role_id INTEGER REFERENCES roles(id) ON DELETE CASCADE,
+- email CITEXT NOT NULL
+- password VARCHAR(100) NOT NULL
+- name VARCHAR(50) NOT NULL
+- surname VARCHAR(50) NOT NULL
+- address VARCHAR(50) NOT NULL
+- city VARCHAR(50) NOT NULL
+- country VARCHAR(50) NOT NULL
+- phone_number VARCHAR(20) NOT NULL
+
+## roles
+
+- id SERIAL PRIMARY NOT NULL,
+- role VARCHAR(50) NOT NULL
