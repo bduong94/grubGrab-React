@@ -6,4 +6,4 @@ const dbParams = {
   database: process.env.DB_NAME,
 };
 
-export default dbParams;
+module.exports = dbParams;
