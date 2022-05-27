@@ -35,6 +35,7 @@
 ## order_histories
 
 - id SERIAL PRIMARY NOT NULL,
+- user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 - total INTEGER NOT NULL
 - order_date TIMESTAMP NOT NULL
 - completed_date TIMESTAMP NOT NULL
