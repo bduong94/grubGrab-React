@@ -21,6 +21,12 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 const dev = app.get("env") !== "production";
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
 app.use(cors());
 
 //If not in development
