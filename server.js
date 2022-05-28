@@ -11,6 +11,11 @@ const dbParams = require("./db/db");
 //Testing
 console.log(dbParams);
 
+// PG Database Setup
+const { Pool } = require("pg");
+const db = new Pool(dbParams);
+db.connect();
+
 //Server set-up
 const PORT = process.env.PORT || 8080;
 const app = express();
