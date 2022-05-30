@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const path = require("path");
-const dbParams = require("./db/db");
+const dbParams = require("./config/db.config");
 
 //Testing
 console.log(dbParams);
