@@ -23,12 +23,6 @@ const dev = app.get("env") !== "production";
 const db = require("./db/models");
 db.sequelize.sync();
 
-//Routes definition
-const testsRoute = require("./db/routes/test.routes");
-
-//Mount resource to Routes
-testsRoute(app);
-
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -53,6 +47,12 @@ if (!dev) {
 if (dev) {
   app.use(morgan("dev"));
 }
+
+//Routes definition
+const testsRoute = require("./db/routes/test.routes");
+
+//Mount resource to Routes
+testsRoute(app);
 
 //Start Server
 app.listen(PORT, (err) => {

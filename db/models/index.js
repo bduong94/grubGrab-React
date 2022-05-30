@@ -6,12 +6,14 @@ const {
   password,
   database,
   dialect,
+  pool,
 } = require("../../config/db.config");
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(database, user, password, {
   host: host,
   dialect: dialect,
   operatorsAliases: false,
+  pool: pool,
 });
 
 const db = {};

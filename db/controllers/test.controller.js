@@ -4,6 +4,9 @@ const Op = db.Sequelize.Op;
 
 // Create and Save a new Test
 exports.create = (req, res) => {
+  console.log("INSIDE");
+  console.log(req.body);
+
   if (!req.body.title) {
     res.status(400).send({
       message: "Content cannot be empty!",
