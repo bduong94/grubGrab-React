@@ -23,6 +23,8 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 const dev = app.get("env") !== "production";
 
+//Routes
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
