@@ -30,7 +30,17 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Tests from the database
-exports.findAll = (req, res) => {};
+exports.findAll = (req, res) => {
+  Test.findAll()
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occured while retrieving the test!",
+      });
+    });
+};
 
 // Find a single Tests with an id
 exports.findOne = (req, res) => {};
