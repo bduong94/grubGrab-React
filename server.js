@@ -11,6 +11,11 @@ const dbParams = require("./config/db.config");
 //Testing
 console.log(dbParams);
 
+//Server set-up
+const PORT = process.env.PORT || 8080;
+const app = express();
+const dev = app.get("env") !== "production";
+
 // PG Database Setup
 // const { Pool } = require("pg");
 // const db = new Pool(dbParams);
@@ -18,12 +23,11 @@ console.log(dbParams);
 const db = require("./db/models");
 db.sequelize.sync();
 
-//Server set-up
-const PORT = process.env.PORT || 8080;
-const app = express();
-const dev = app.get("env") !== "production";
+//Routes definition
+const testsRoute = require("./db/routes/test.routes");
 
-//Routes
+//Mount resource to Routes
+testsRoute(app);
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
