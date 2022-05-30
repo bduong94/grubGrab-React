@@ -12,9 +12,11 @@ const dbParams = require("./config/db.config");
 console.log(dbParams);
 
 // PG Database Setup
-const { Pool } = require("pg");
-const db = new Pool(dbParams);
-db.connect();
+// const { Pool } = require("pg");
+// const db = new Pool(dbParams);
+// db.connect();
+const db = require("./models");
+db.sequelize.sync();
 
 //Server set-up
 const PORT = process.env.PORT || 8080;
