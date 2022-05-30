@@ -15,7 +15,7 @@ console.log(dbParams);
 // const { Pool } = require("pg");
 // const db = new Pool(dbParams);
 // db.connect();
-const db = require("./models");
+const db = require("./db/models");
 db.sequelize.sync();
 
 //Server set-up
