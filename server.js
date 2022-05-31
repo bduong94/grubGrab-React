@@ -21,7 +21,7 @@ const dev = app.get("env") !== "production";
 // const db = new Pool(dbParams);
 // db.connect();
 const db = require("./db/models");
-db.sequelize.sync();
+db.sequelize.sync({ force: true });
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -49,10 +49,10 @@ if (dev) {
 }
 
 //Routes definition
-const testsRoute = require("./db/routes/test.routes");
+const rolesRoute = require("./db/routes/role.routes");
 
 //Mount resource to Routes
-testsRoute(app);
+rolesRoute(app);
 
 //Start Server
 app.listen(PORT, (err) => {

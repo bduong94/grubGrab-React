@@ -19,6 +19,8 @@ const sequelize = new Sequelize(database, user, password, {
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.tests = require("./test.model")(sequelize, Sequelize);
+
+//Table definitions for database
+db.roles = require("./role.model")(sequelize, Sequelize);
 
 module.exports = db;

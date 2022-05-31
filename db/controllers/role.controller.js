@@ -1,13 +1,10 @@
 const db = require("../models");
-const Test = db.tests;
+const Role = db.roles;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Test
 exports.create = (req, res) => {
-  console.log("INSIDE");
-  console.log(req.body);
-
-  if (!req.body.title) {
+  if (!req.body.name) {
     res.status(400).send({
       message: "Content cannot be empty!",
     });
@@ -15,32 +12,30 @@ exports.create = (req, res) => {
     return;
   }
 
-  const test = {
-    title: req.body.title,
-    description: req.body.description,
-    published: req.body.published ? req.body.publsihed : false,
+  const role = {
+    name: req.body.name,
   };
 
-  Test.create(test)
+  Role.create(role)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occured while creating the test!",
+        message: err.message || "Some error occured while creating the role!",
       });
     });
 };
 
 // Retrieve all Tests from the database
 exports.findAll = (req, res) => {
-  Test.findAll()
+  Role.findAll()
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occured while retrieving the test!",
+        message: err.message || "Some error occured while retrieving the role!",
       });
     });
 };
