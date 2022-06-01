@@ -16,18 +16,25 @@ module.exports = (sequelize, DataTypes) => {
     {
       role_id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         model: "roles",
         key: "id",
         onDelete: "cascade",
       },
-      email: DataTypes.CITEXT,
-      password: DataTypes.STRING(50),
-      name: DataTypes.STRING(50),
-      surname: DataTypes.STRING(50),
-      address: DataTypes.STRING,
-      city: DataTypes.STRING,
-      country: DataTypes.STRING,
-      phone_number: DataTypes.STRING,
+      email: {
+        type: DataTypes.CITEXT,
+        allowNull: false,
+      },
+      password: {
+        type: DataTypes.STRING(50),
+        allowNull: false,
+      },
+      name: { type: DataTypes.STRING(50), allowNull: false },
+      surname: { type: DataTypes.STRING(50), allowNull: false },
+      address: { type: DataTypes.STRING, allowNull: false },
+      city: { type: DataTypes.STRING, allowNull: false },
+      country: { type: DataTypes.STRING, allowNull: false },
+      phone_number: { type: DataTypes.STRING, allowNull: false },
     },
     {
       underscored: true,
