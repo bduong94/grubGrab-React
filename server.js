@@ -6,10 +6,10 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const path = require("path");
-const dbParams = require("./config/db.config");
+// const dbParams = require("./config/db.config");
 
-//Testing
-console.log(dbParams);
+// //Testing
+// console.log(dbParams);
 
 //Server set-up
 const PORT = process.env.PORT || 8080;

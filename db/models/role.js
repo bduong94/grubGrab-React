@@ -1,4 +1,22 @@
 "use strict";
+
+// const { Sequelize, DataTypes } = require("sequelize");
+// const sequelize = new Sequelize("sqlite::memory:");
+
+// const Roles = sequelize.define(
+//   "Roles",
+//   {
+//     // Model attributes are defined here
+//     firstName: {
+//       type: DataTypes.STRING,
+//       allowNull: false,
+//     },
+//   },
+//   {
+//     // Other model options go here
+//   }
+// );
+
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Roles extends Model {
@@ -16,6 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
     },
     {
+      underscored: true,
       sequelize,
       modelName: "Roles",
     }
