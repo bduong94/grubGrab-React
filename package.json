@@ -28,7 +28,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "production": "NODE_ENV=production node server.js",
-    "seeds": "cd ./db && npx sequelize-cli db:seed:all"
+    "seeds": "cd ./db && npx sequelize-cli db:seed:all",
+    "server": "nodemon server.js"
   },
   "eslintConfig": {
     "extends": [
