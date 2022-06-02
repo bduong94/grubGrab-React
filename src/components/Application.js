@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CartItemList from "./CartItemList";
-import FoodItemList from "./FoodItemList";
+import MenuItemList from "./MenuItemList";
 import Navbar from "./Navbar";
 import axios from "axios";
 
@@ -44,6 +44,9 @@ const testData = [
 ];
 
 export default function Application(props) {
+  //Setters
+  const [menuItems, setMenuItems] = useState([]);
+
   //Helper Functions
   const getMenuItems = async () => {
     const menuItems = await axios.get("http://localhost:8080/api/menu_items");
@@ -55,14 +58,14 @@ export default function Application(props) {
     const menuItems = async () => await getMenuItems();
 
     menuItems().then((response) => {
-      console.log(response.data);
+      setMenuItems(response.data);
     });
   }, []);
   return (
     <>
       <Navbar />
       <CartItemList />
-      {/* <FoodItemList FoodItems={testData} /> */}
+      <MenuItemList menuItems={menuItems} />
     </>
   );
 }

@@ -1,9 +1,9 @@
 import { React, useState } from "react";
-import FoodButton from "./FoodButton";
+import MenuButton from "./MenuButton";
 
-export default function FoodItem(props) {
+export default function MenuItem({ name, price, description, image_url }) {
   const [quantity, setQuantity] = useState(0);
-  const price_in_dollars = `$${props.price_in_cents / 100}`;
+  const price_in_dollars = `$${price / 100}`;
 
   //Helper Function
   const increaseQuantity = () => {
@@ -18,10 +18,10 @@ export default function FoodItem(props) {
   return (
     <div className="col-4">
       <div className="card">
-        <img src={props.image} className="card-img-top food-image" alt="..." />
+        <img src={image_url} className="card-img-top food-image" alt="..." />
         <div className="card-body">
-          <h5 className="card-title">{props.name}</h5>
-          <p className="card-text">{props.description}</p>
+          <h5 className="card-title">{name}</h5>
+          <p className="card-text">{description}</p>
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">Price: {price_in_dollars}</li>
@@ -31,7 +31,7 @@ export default function FoodItem(props) {
                 Quanity:
               </label>
               <div className="item-quantity">
-                <FoodButton buttonType="secondary" onClick={decreaseQuantity} />
+                <MenuButton buttonType="secondary" onClick={decreaseQuantity} />
                 <input
                   type="text"
                   inputMode="numeric"
@@ -39,7 +39,7 @@ export default function FoodItem(props) {
                   id="exampleInputPassword1"
                   value={quantity}
                 />
-                <FoodButton buttonType="dark" onClick={increaseQuantity} />
+                <MenuButton buttonType="dark" onClick={increaseQuantity} />
               </div>
             </li>
             <li className="list-group-item">
