@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function FoodButton(props) {
+export default function MenuBUtton(props) {
   const buttonClass = `btn btn-${props.buttonType}`;
   const buttonText = props.buttonType === "secondary" ? "-" : "+";
 

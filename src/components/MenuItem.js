@@ -18,7 +18,7 @@ export default function MenuItem({ name, price, description, image_url }) {
   return (
     <div className="col-4">
       <div className="card">
-        <img src={image_url} className="card-img-top food-image" alt="..." />
+        <img src={image_url} className="card-img-top menu-image" alt="..." />
         <div className="card-body">
           <h5 className="card-title">{name}</h5>
           <p className="card-text">{description}</p>
@@ -26,7 +26,7 @@ export default function MenuItem({ name, price, description, image_url }) {
         <ul className="list-group list-group-flush">
           <li className="list-group-item">Price: {price_in_dollars}</li>
           <form>
-            <li className="list-group-item food-quantity">
+            <li className="list-group-item menu-quantity">
               <label htmlFor="exampleInputPassword1" className="form-label">
                 Quanity:
               </label>
