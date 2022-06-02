@@ -47,7 +47,7 @@ export default function Application(props) {
     <>
       <Navbar />
       <CartItemList />
-      <FoodItemList FoodItems={testData} />
+      {/* <FoodItemList FoodItems={testData} /> */}
     </>
   );
 }

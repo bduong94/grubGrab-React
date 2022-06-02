@@ -49,10 +49,12 @@ if (dev) {
 }
 
 //Routes definition
-const rolesRoute = require("./db/routes/role.routes");
+const rolesRoutes = require("./db/routes/role.routes");
+const menuItemsRoutes = require("./db/routes/menu_items_routes");
 
 //Mount resource to Routes
-rolesRoute(app);
+rolesRoutes(app);
+menuItemsRoutes(app);
 
 //Start Server
 app.listen(PORT, (err) => {
