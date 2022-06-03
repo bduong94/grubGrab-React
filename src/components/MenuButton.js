@@ -7,15 +7,17 @@ export default function MenuButton({ buttonType, onClick }) {
       : buttonType === "subtract"
       ? "btn btn-secondary"
       : null;
-  `btn btn-${buttonType}`;
+
   const buttonText =
     buttonType === "add" ? "+" : buttonType === "subtract" ? "-" : null;
 
   return (
     <div>
-      <button type="button" className={buttonClass} onClick={onClick}>
-        {buttonText}
-      </button>
+      {buttonClass ? (
+        <button type="button" className={buttonClass} onClick={onClick}>
+          {buttonText}
+        </button>
+      ) : null}
     </div>
   );
 }
