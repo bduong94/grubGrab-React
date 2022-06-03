@@ -7,22 +7,22 @@ describe("Tests for MenuButton", () => {
     render(<MenuButton />);
   });
 
-  it("Renders a button with no text", () => {
+  xit("Does not render a button if button type is not add or minus", () => {
     render(<MenuButton />);
     const addButton = screen.queryByText("+");
-    const minusButton = screen.queryByText("-");
+    const subtractButton = screen.queryByText("-");
 
     expect(addButton).toBeNull();
-    expect(minusButton).toBeNull();
+    expect(subtractButton).toBeNull();
   });
 
   it("Renders a '+' Button", () => {
-    const { getByText } = render(<MenuButton buttonType="dark" />);
+    const { getByText } = render(<MenuButton buttonType="add" />);
     expect(getByText("+")).toBeInTheDocument();
   });
 
   it("Renders a '-' Button", () => {
-    const { getByText } = render(<MenuButton buttonType="secondary" />);
+    const { getByText } = render(<MenuButton buttonType="subtract" />);
     expect(getByText("-")).toBeInTheDocument();
   });
 });

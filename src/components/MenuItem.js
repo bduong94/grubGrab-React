@@ -31,7 +31,7 @@ export default function MenuItem({ name, price, description, image_url }) {
                 Quanity:
               </label>
               <div className="item-quantity">
-                <MenuButton buttonType="secondary" onClick={decreaseQuantity} />
+                <MenuButton buttonType="subtract" onClick={decreaseQuantity} />
                 <input
                   type="text"
                   inputMode="numeric"
@@ -39,7 +39,7 @@ export default function MenuItem({ name, price, description, image_url }) {
                   id="exampleInputPassword1"
                   value={quantity}
                 />
-                <MenuButton buttonType="dark" onClick={increaseQuantity} />
+                <MenuButton buttonType="add" onClick={increaseQuantity} />
               </div>
             </li>
             <li className="list-group-item">
