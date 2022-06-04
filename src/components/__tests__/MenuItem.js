@@ -35,7 +35,9 @@ describe("Tests for a Menu Item", () => {
     );
 
     const buttons = screen.queryAllByRole("button");
+    const testItem = screen.queryByText("Test Item");
 
     expect(buttons).toHaveLength(3);
+    expect(testItem).not.toBeNull();
   });
 });
