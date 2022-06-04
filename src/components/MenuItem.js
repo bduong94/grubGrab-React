@@ -3,7 +3,7 @@ import MenuButton from "./MenuButton";
 
 export default function MenuItem({ name, price, description, image_url }) {
   const [quantity, setQuantity] = useState(0);
-  const price_in_dollars = `$${price / 100}`;
+  const price_in_dollars = price ? `$${price / 100}` : null;
 
   //Helper Function
   const increaseQuantity = () => {
@@ -15,7 +15,7 @@ export default function MenuItem({ name, price, description, image_url }) {
       setQuantity(quantity - 1);
     }
   };
-  return (
+  return price ? (
     <div className="col-4">
       <div className="card">
         <img src={image_url} className="card-img-top menu-image" alt="..." />
@@ -37,7 +37,7 @@ export default function MenuItem({ name, price, description, image_url }) {
                   inputMode="numeric"
                   className="form-control"
                   id="exampleInputPassword1"
-                  value={quantity}
+                  defaultValue={quantity}
                 />
                 <MenuButton buttonType="add" onClick={increaseQuantity} />
               </div>
@@ -51,5 +51,5 @@ export default function MenuItem({ name, price, description, image_url }) {
         </ul>
       </div>
     </div>
-  );
+  ) : null;
 }
