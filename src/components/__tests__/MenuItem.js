@@ -16,13 +16,15 @@ describe("Tests for a Menu Item", () => {
     render(<MenuItem />);
   });
 
-  it("Menu Item will not render if parameters are not correct", () => {
+  it("Menu Item will not render if no parameters are passed", () => {
     render(<MenuItem />);
 
-    const firstButton = screen.queryAllByRole("button");
+    const buttons = screen.queryAllByRole("button");
 
-    expect(firstButton).toHaveLength(0);
+    expect(buttons).toHaveLength(0);
+  });
 
+  it("Menu Item will render if parameters are correct", () => {
     render(
       <MenuItem
         name={menuItem.name}
@@ -32,8 +34,8 @@ describe("Tests for a Menu Item", () => {
       />
     );
 
-    const secondButton = screen.queryAllByRole("button");
+    const buttons = screen.queryAllByRole("button");
 
-    expect(secondButton).toHaveLength(3);
+    expect(buttons).toHaveLength(3);
   });
 });
