@@ -4,6 +4,7 @@ import MenuButton from "./MenuButton";
 export default function MenuItem({ name, price, description, image_url }) {
   const [quantity, setQuantity] = useState(0);
   const price_in_dollars = price ? `$${price / 100}` : null;
+  const labelName = name.toLowerCase().replace(" ", "-");
 
   //Helper Function
   const increaseQuantity = () => {
@@ -15,6 +16,7 @@ export default function MenuItem({ name, price, description, image_url }) {
       setQuantity(quantity - 1);
     }
   };
+
   return price ? (
     <div className="col-4">
       <div className="card">
@@ -27,7 +29,7 @@ export default function MenuItem({ name, price, description, image_url }) {
           <li className="list-group-item">Price: {price_in_dollars}</li>
           <form>
             <li className="list-group-item menu-quantity">
-              <label htmlFor="exampleInputPassword1" className="form-label">
+              <label htmlFor={labelName} className="form-label">
                 Quanity:
               </label>
               <div className="item-quantity">
@@ -36,7 +38,7 @@ export default function MenuItem({ name, price, description, image_url }) {
                   type="text"
                   inputMode="numeric"
                   className="form-control"
-                  id="exampleInputPassword1"
+                  id={labelName}
                   value={quantity}
                 />
                 <MenuButton buttonType="add" onClick={increaseQuantity} />
