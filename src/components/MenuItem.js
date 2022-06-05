@@ -17,6 +17,17 @@ export default function MenuItem({ name, price, description, image_url }) {
     }
   };
 
+  const keyboardInput = (e) => {
+    const numArray = [...Array(10).keys()];
+    const validInput = numArray.indexOf(Number(e.key)) !== -1;
+
+    if (validInput || e.key === "Backspace") {
+      console.log("Passes");
+    } else {
+      e.preventDefault();
+    }
+  };
+
   return price ? (
     <div className="col-4">
       <div className="card">
@@ -35,11 +46,12 @@ export default function MenuItem({ name, price, description, image_url }) {
               <div className="item-quantity">
                 <MenuButton buttonType="subtract" onClick={decreaseQuantity} />
                 <input
+                  onKeyPress={keyboardInput}
                   type="text"
                   inputMode="numeric"
                   className="form-control"
                   id={labelName}
-                  value={quantity}
+                  defaultValue={quantity}
                 />
                 <MenuButton buttonType="add" onClick={increaseQuantity} />
               </div>
