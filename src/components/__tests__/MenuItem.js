@@ -108,7 +108,8 @@ describe("Tests for a Menu Item", () => {
     );
 
     const input = screen.queryByLabelText("Quantity:");
-    input.simulate("change", { target: { value: 5 } });
+
+    fireEvent.change(input, { target: { value: 5 } });
     expect(screen.getByDisplayValue("5")).toBeInTheDocument();
   });
 });
