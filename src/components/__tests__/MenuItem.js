@@ -110,6 +110,30 @@ describe("Tests for a Menu Item", () => {
     const input = screen.queryByLabelText("Quantity:");
 
     fireEvent.change(input, { target: { value: 5 } });
+
     expect(screen.getByDisplayValue("5")).toBeInTheDocument();
+  });
+
+  xit("Quantity should be blank when typing A", () => {
+    const { container } = render(
+      <MenuItem
+        name={menuItem.name}
+        price={menuItem.price}
+        description={menuItem.description}
+        image_url={menuItem.image_url}
+      />
+    );
+
+    const input = container.querySelector("input");
+
+    fireEvent.click(input);
+    fireEvent.keyPress(input, {
+      key: "Backspace",
+      code: "Backspace",
+    });
+    fireEvent.keyPress(input, { key: "a", code: "KeyA" });
+    fireEvent.keyPress(input, { key: "5", code: "Digit5" });
+
+    expect(screen.getByDisplayValue("")).toBeInTheDocument();
   });
 });
