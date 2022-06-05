@@ -40,4 +40,19 @@ describe("Tests for a Menu Item", () => {
     expect(buttons).toHaveLength(3);
     expect(testItem).not.toBeNull();
   });
+
+  it("Input is +1 when clicking add button", () => {
+    render(
+      <MenuItem
+        name={menuItem.name}
+        price={menuItem.price}
+        description={menuItem.description}
+        image_url={menuItem.image_url}
+      />
+    );
+
+    const addOne = screen.queryByText("1");
+
+    expect(addOne).not.toBeNull();
+  });
 });
