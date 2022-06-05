@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import MenuItem from "../MenuItem";
 import MenuButton from "../MenuButton";
 
@@ -50,6 +50,11 @@ describe("Tests for a Menu Item", () => {
         image_url={menuItem.image_url}
       />
     );
+
+    const button = screen.queryByText("+");
+
+    console.log(button);
+    fireEvent.click(button);
 
     const addOne = screen.queryByText("1");
 

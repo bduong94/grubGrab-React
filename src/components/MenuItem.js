@@ -39,7 +39,7 @@ export default function MenuItem({ name, price, description, image_url }) {
                   id="exampleInputPassword1"
                   defaultValue={quantity}
                 />
-                <MenuButton buttonType="add" onClick={increaseQuantity} />
+                <MenuButton buttonType="add" onClick={() => increaseQuantity} />
               </div>
             </li>
             <li className="list-group-item">
