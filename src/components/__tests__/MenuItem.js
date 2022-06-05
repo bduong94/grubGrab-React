@@ -53,7 +53,6 @@ describe("Tests for a Menu Item", () => {
 
     const button = screen.queryByText("+");
 
-    console.log(button);
     fireEvent.click(button);
 
     const addOne = screen.queryByText("1");
