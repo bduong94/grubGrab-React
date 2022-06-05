@@ -41,7 +41,7 @@ export default function MenuItem({ name, price, description, image_url }) {
           <form>
             <li className="list-group-item menu-quantity">
               <label htmlFor={labelName} className="form-label">
-                Quanity:
+                Quantity:
               </label>
               <div className="item-quantity">
                 <MenuButton buttonType="subtract" onClick={decreaseQuantity} />

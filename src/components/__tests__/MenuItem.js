@@ -96,4 +96,19 @@ describe("Tests for a Menu Item", () => {
 
     expect(screen.getByDisplayValue("1")).toBeInTheDocument();
   });
+
+  it("Quantity should be 5 when typing 5", () => {
+    render(
+      <MenuItem
+        name={menuItem.name}
+        price={menuItem.price}
+        description={menuItem.description}
+        image_url={menuItem.image_url}
+      />
+    );
+
+    const input = screen.queryByLabelText("Quantity:");
+    input.simulate("change", { target: { value: 5 } });
+    expect(screen.getByDisplayValue("5")).toBeInTheDocument();
+  });
 });
