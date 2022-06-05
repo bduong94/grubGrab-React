@@ -4,7 +4,7 @@ import MenuButton from "./MenuButton";
 export default function MenuItem({ name, price, description, image_url }) {
   const [quantity, setQuantity] = useState(0);
   const price_in_dollars = price ? `$${price / 100}` : null;
-  const labelName = name.toLowerCase().replace(" ", "-");
+  const labelName = name ? name.toLowerCase().replace(" ", "-") : null;
 
   //Helper Function
   const increaseQuantity = () => {

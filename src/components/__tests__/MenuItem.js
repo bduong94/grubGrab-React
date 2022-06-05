@@ -55,8 +55,8 @@ describe("Tests for a Menu Item", () => {
 
     fireEvent.click(button);
 
-    const addOne = screen.queryByText("1");
+    expect(screen.getByDisplayValue("1")).toBeInTheDocument();
 
-    expect(addOne).not.toBeNull();
+    fireEvent.click(button);
   });
 });
