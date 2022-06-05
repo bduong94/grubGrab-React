@@ -59,4 +59,23 @@ describe("Tests for a Menu Item", () => {
 
     fireEvent.click(button);
   });
+
+  it("Input is still 0 when clicking subtract button", () => {
+    render(
+      <MenuItem
+        name={menuItem.name}
+        price={menuItem.price}
+        description={menuItem.description}
+        image_url={menuItem.image_url}
+      />
+    );
+
+    const button = screen.queryByText("-");
+
+    fireEvent.click(button);
+
+    expect(screen.getByDisplayValue("0")).toBeInTheDocument();
+
+    fireEvent.click(button);
+  });
 });
