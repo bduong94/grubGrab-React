@@ -8,16 +8,16 @@ export default function MenuItem({ name, price, description, image_url }) {
 
   //Helper Function
   const increaseQuantity = () => {
-    setQuantity(quantity + 1);
+    setQuantity(Number(quantity) + 1);
   };
 
   const decreaseQuantity = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
+    if (Number(quantity) > 0) {
+      setQuantity(Number(quantity) - 1);
     }
   };
 
-  const keyboardInput = (e) => {
+  const onlyNumberInput = (e) => {
     const numArray = [...Array(10).keys()];
     const validInput = numArray.indexOf(Number(e.key)) !== -1;
 
@@ -46,12 +46,12 @@ export default function MenuItem({ name, price, description, image_url }) {
               <div className="item-quantity">
                 <MenuButton buttonType="subtract" onClick={decreaseQuantity} />
                 <input
-                  onKeyPress={keyboardInput}
+                  onKeyPress={onlyNumberInput}
+                  onChange={(e) => setQuantity(e.target.value)}
                   type="text"
-                  inputMode="numeric"
                   className="form-control"
                   id={labelName}
-                  defaultValue={quantity}
+                  value={quantity}
                 />
                 <MenuButton buttonType="add" onClick={increaseQuantity} />
               </div>
