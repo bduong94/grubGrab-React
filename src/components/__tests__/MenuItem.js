@@ -41,7 +41,7 @@ describe("Tests for a Menu Item", () => {
     expect(testItem).not.toBeNull();
   });
 
-  it("Input is +1 when clicking add button", () => {
+  it("Quanity is +1 when clicking add button", () => {
     render(
       <MenuItem
         name={menuItem.name}
@@ -60,7 +60,7 @@ describe("Tests for a Menu Item", () => {
     fireEvent.click(button);
   });
 
-  it("Input is still 0 when clicking subtract button", () => {
+  it("Quanity is still 0 when clicking subtract button", () => {
     render(
       <MenuItem
         name={menuItem.name}
@@ -75,7 +75,25 @@ describe("Tests for a Menu Item", () => {
     fireEvent.click(button);
 
     expect(screen.getByDisplayValue("0")).toBeInTheDocument();
+  });
 
-    fireEvent.click(button);
+  it("Quantity is 1 when clicking add button twice and subtract button once", () => {
+    render(
+      <MenuItem
+        name={menuItem.name}
+        price={menuItem.price}
+        description={menuItem.description}
+        image_url={menuItem.image_url}
+      />
+    );
+
+    const addButton = screen.queryByText("+");
+    const subtractButton = screen.queryByText("-");
+
+    fireEvent.click(addButton);
+    fireEvent.click(addButton);
+    fireEvent.click(subtractButton);
+
+    expect(screen.getByDisplayValue("1")).toBeInTheDocument();
   });
 });
