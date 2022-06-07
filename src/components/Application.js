@@ -3,6 +3,7 @@ import CartItemList from "./CartItemList";
 import MenuItemList from "./MenuItemList";
 import Navbar from "./Navbar";
 import axios from "axios";
+import SignUp from "./SignUp";
 
 const testData = [
   {
@@ -64,6 +65,7 @@ export default function Application(props) {
   return (
     <>
       <Navbar />
+      <SignUp />
       <CartItemList />
       <MenuItemList menuItems={menuItems} />
     </>
