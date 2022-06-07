@@ -3,7 +3,7 @@ import React from "react";
 export default function SignUp() {
   return (
     <>
-      <form class="row g-3 needs-validation" novalidate>
+      <form class="row g-3 needs-validation" id="signup" novalidate>
         <div class="col-md-4">
           <label for="signup-email" class="form-label">
             Email
@@ -42,6 +42,31 @@ export default function SignUp() {
             required
           />
           <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="col-md-4">
+          <label for="signup-surname" class="form-label">
+            Surname
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="signup-surname"
+            value="Otto"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="col-md-6">
+          <label for="signup-address" class="form-label">
+            Address
+          </label>
+          <input
+            type="text"
+            class="form-control"
+            id="signup-address"
+            required
+          />
+          <div class="invalid-feedback">Please provide a valid address.</div>
         </div>
         <div class="col-md-6">
           <label for="signup-city" class="form-label">
