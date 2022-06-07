@@ -33,7 +33,8 @@ module.exports = (sequelize, DataTypes) => {
       surname: { type: DataTypes.STRING(50), allowNull: false },
       address: { type: DataTypes.STRING, allowNull: false },
       city: { type: DataTypes.STRING, allowNull: false },
-      country: { type: DataTypes.STRING, allowNull: false },
+      province: { type: DataTypes.STRING, allowNull: false },
+      postal_code: { type: DataTypes.STRING, allowNull: false },
       phone_number: { type: DataTypes.STRING, allowNull: false },
     },
     {

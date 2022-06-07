@@ -5,84 +5,76 @@ export default function SignUp() {
     <>
       <form class="row g-3 needs-validation" novalidate>
         <div class="col-md-4">
-          <label for="validationCustom01" class="form-label">
-            First name
+          <label for="signup-email" class="form-label">
+            Email
           </label>
           <input
             type="text"
             class="form-control"
-            id="validationCustom01"
+            id="signup-email"
             value="Mark"
             required
           />
           <div class="valid-feedback">Looks good!</div>
         </div>
         <div class="col-md-4">
-          <label for="validationCustom02" class="form-label">
-            Last name
+          <label for="signup-password" class="form-label">
+            Password
           </label>
           <input
-            type="text"
+            type="password"
             class="form-control"
-            id="validationCustom02"
+            id="signup-password"
             value="Otto"
             required
           />
           <div class="valid-feedback">Looks good!</div>
         </div>
         <div class="col-md-4">
-          <label for="validationCustomUsername" class="form-label">
-            Username
-          </label>
-          <div class="input-group has-validation">
-            <span class="input-group-text" id="inputGroupPrepend">
-              @
-            </span>
-            <input
-              type="text"
-              class="form-control"
-              id="validationCustomUsername"
-              aria-describedby="inputGroupPrepend"
-              required
-            />
-            <div class="invalid-feedback">Please choose a username.</div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <label for="validationCustom03" class="form-label">
-            City
+          <label for="signup-name" class="form-label">
+            Name
           </label>
           <input
             type="text"
             class="form-control"
-            id="validationCustom03"
+            id="signup-name"
+            value="Otto"
             required
           />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="col-md-6">
+          <label for="signup-city" class="form-label">
+            City
+          </label>
+          <input type="text" class="form-control" id="signup-city" required />
           <div class="invalid-feedback">Please provide a valid city.</div>
         </div>
         <div class="col-md-3">
-          <label for="validationCustom04" class="form-label">
-            State
+          <label for="signup-province" class="form-label">
+            Province
           </label>
-          <select class="form-select" id="validationCustom04" required>
+          <select class="form-select" id="signup-province" required>
             <option selected disabled value="">
               Choose...
             </option>
             <option>...</option>
           </select>
-          <div class="invalid-feedback">Please select a valid state.</div>
+          <div class="invalid-feedback">Please select a valid province.</div>
         </div>
         <div class="col-md-3">
-          <label for="validationCustom05" class="form-label">
-            Zip
+          <label for="signup-postal-code" class="form-label">
+            Postal Code
           </label>
           <input
             type="text"
             class="form-control"
-            id="validationCustom05"
+            id="signup-postal-code"
             required
           />
-          <div class="invalid-feedback">Please provide a valid zip.</div>
+          <div class="invalid-feedback">
+            Please provide a valid postal code.
+          </div>
         </div>
         <div class="col-12">
           <div class="form-check">
