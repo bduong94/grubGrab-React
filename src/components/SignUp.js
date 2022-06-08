@@ -1,4 +1,5 @@
 import React from "react";
+import Options from "./Options";
 
 export default function SignUp() {
   const provinces = [
@@ -14,6 +15,9 @@ export default function SignUp() {
     "Saskatchewan",
   ];
 
+  const provinceList = provinces.map((province, index) => {
+    return <Options key={index} option={province} />;
+  });
   //Helper Functions
   const submitInformation = (e) => {
     e.preventDefault();
@@ -109,7 +113,7 @@ export default function SignUp() {
             <option selected disabled value="">
               Choose...
             </option>
-            <option>...</option>
+            {provinceList}
           </select>
           <div className="invalid-feedback">
             Please select a valid province.
