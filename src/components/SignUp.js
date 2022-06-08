@@ -1,6 +1,20 @@
 import React from "react";
 
 export default function SignUp() {
+  const provinces = [
+    "Alberta",
+    "British Columbia",
+    "Manitoba",
+    "New Brunswick",
+    "Newfoundland and Labrador",
+    "Nova Scotia",
+    "Ontario",
+    "Prince Edward Island",
+    "Quebec",
+    "Saskatchewan",
+  ];
+
+  //Helper Functions
   const submitInformation = (e) => {
     e.preventDefault();
   };
