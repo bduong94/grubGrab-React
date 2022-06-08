@@ -1,9 +1,18 @@
 import React from "react";
 
 export default function SignUp() {
+  const submitInformation = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
-      <form className="row g-3 needs-validation" id="signup" novalidate>
+      <form
+        onSubmit={submitInformation}
+        className="row g-3 needs-validation"
+        id="signup"
+        novalidate
+      >
         <div className="col-md-4">
           <label for="signup-email" className="form-label">
             Email
