@@ -2,7 +2,7 @@ const db = require("../models");
 const Role = db.Roles;
 // const Op = db.Sequelize.Op;
 
-// Create and Save a new Test
+// Create and Save a new Role
 exports.create = (req, res) => {
   if (!req.body.name) {
     res.status(400).send({
