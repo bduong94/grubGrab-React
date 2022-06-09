@@ -1,6 +1,6 @@
 const db = require("../models");
 const Role = db.Roles;
-const Op = db.Sequelize.Op;
+// const Op = db.Sequelize.Op;
 
 // Create and Save a new Test
 exports.create = (req, res) => {
