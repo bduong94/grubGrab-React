@@ -41,6 +41,16 @@ exports.create = (req, res) => {
     province: req.body.province,
     postal_code: req.body.postalCode,
   };
+
+  User.create(user)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occured while creating the user",
+      });
+    });
 };
 
 // Retrieve all Tests from the database

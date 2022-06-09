@@ -30,6 +30,20 @@ export default function SignUp() {
 
   const submitInformation = (e) => {
     e.preventDefault();
+
+    const userInformation = {
+      email: e.target[0],
+      password: e.target[1],
+      name: e.target[2],
+      surname: e.target[3],
+      phoneNumber: e.target[4],
+      address: e.target[5],
+      city: e.target[6],
+      province: e.target[7],
+      postalCode: e.target[8],
+    };
+
+    console.log(userInformation);
   };
 
   return (
