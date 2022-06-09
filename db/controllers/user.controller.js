@@ -21,6 +21,25 @@ exports.create = (req, res) => {
   //         message: err.message || "Some error occured while creating the role!",
   //       });
   //     });
+
+  if (!req.body.email) {
+    res.status(400).send({
+      message: "Content cannot be empty!",
+    });
+
+    return;
+  }
+
+  const user = {
+    email: req.body.email,
+    password: req.body.password,
+    name: req.body.name,
+    surname: req.body.surname,
+    address: req.body.address,
+    city: req.body.city,
+    province: req.body.province,
+    postal_code: req.body.postal_code,
+  };
 };
 
 // Retrieve all Tests from the database

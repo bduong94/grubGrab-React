@@ -79,6 +79,18 @@ export default function SignUp() {
           />
           <div className="valid-feedback">Looks good!</div>
         </div>
+        <div className="col-md-4">
+          <label for="signup-phone-number" className="form-label">
+            Phone Number
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="signup-phone-number"
+            required
+          />
+          <div className="valid-feedback">Looks good!</div>
+        </div>
         <div className="col-md-6">
           <label for="signup-address" className="form-label">
             Address
