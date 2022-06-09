@@ -22,6 +22,7 @@ exports.create = (req, res) => {
   //       });
   //     });
 
+  console.log(req.body);
   if (!req.body.email) {
     res.status(400).send({
       message: "Content cannot be empty!",
@@ -31,6 +32,7 @@ exports.create = (req, res) => {
   }
 
   const user = {
+    role_id: 1,
     email: req.body.email,
     password: req.body.password,
     name: req.body.name,

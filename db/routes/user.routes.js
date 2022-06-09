@@ -6,5 +6,5 @@ module.exports = (app) => {
   //Create User
   router.post("/", users.create);
 
-  app.use("/api/users", router);
+  app.use("/api/user", router);
 };

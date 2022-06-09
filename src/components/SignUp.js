@@ -24,7 +24,7 @@ export default function SignUp() {
   //Helper Functions
 
   const createUser = async (userInformation) => {
-    await axios.post("http://localhost:8080/api/user");
+    await axios.post("http://localhost:8080/api/user", userInformation);
     return;
   };
 
@@ -32,18 +32,20 @@ export default function SignUp() {
     e.preventDefault();
 
     const userInformation = {
-      email: e.target[0],
-      password: e.target[1],
-      name: e.target[2],
-      surname: e.target[3],
-      phoneNumber: e.target[4],
-      address: e.target[5],
-      city: e.target[6],
-      province: e.target[7],
-      postalCode: e.target[8],
+      email: e.target[0].value,
+      password: e.target[1].value,
+      name: e.target[2].value,
+      surname: e.target[3].value,
+      phoneNumber: e.target[4].value,
+      address: e.target[5].value,
+      city: e.target[6].value,
+      province: e.target[7].value,
+      postalCode: e.target[8].value,
     };
 
-    console.log(userInformation);
+    createUser(userInformation)
+      .then(() => console.log("Successfully posted"))
+      .catch((err) => console.log(err.message));
   };
 
   return (
