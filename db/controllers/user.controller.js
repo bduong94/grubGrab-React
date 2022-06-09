@@ -35,10 +35,11 @@ exports.create = (req, res) => {
     password: req.body.password,
     name: req.body.name,
     surname: req.body.surname,
+    phone_number: req.body.phoneNumber,
     address: req.body.address,
     city: req.body.city,
     province: req.body.province,
-    postal_code: req.body.postal_code,
+    postal_code: req.body.postalCode,
   };
 };
 
