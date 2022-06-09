@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import Options from "./Options";
 
 export default function SignUp() {
@@ -15,10 +16,18 @@ export default function SignUp() {
     "Saskatchewan",
   ];
 
+  //Create Options for Province
   const provinceList = provinces.map((province, index) => {
     return <Options key={index} option={province} />;
   });
+
   //Helper Functions
+
+  const createUser = async (userInformation) => {
+    await axios.post("http://localhost:8080/api/user");
+    return;
+  };
+
   const submitInformation = (e) => {
     e.preventDefault();
   };
