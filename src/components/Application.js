@@ -92,7 +92,7 @@ export default function Application(props) {
   return (
     <>
       <Navbar currentUser={currentUser} logOut={logOut} />
-      <SignUp />
+      <SignUp setCookie={setCookie} />
       <CartItemList />
       <MenuItemList menuItems={menuItems} />
     </>

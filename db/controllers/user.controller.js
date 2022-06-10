@@ -86,8 +86,10 @@ exports.getInformation = async (req, res) => {
     });
 };
 
-// Find the user with the given ID
-exports.findOne = (req, res) => {};
+// Find the user with the given email
+exports.findOne = (req, res) => {
+  console.log(req.params);
+};
 
 // Update a Tests with the speicfic id in the request
 exports.delete = (req, res) => {};

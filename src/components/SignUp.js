@@ -27,6 +27,12 @@ export default function SignUp() {
     return;
   };
 
+  const getUserID = async (email) => {
+    const userID = await axios.get("http://localhost:8080/api/user", { email });
+
+    return userID;
+  };
+
   const submitInformation = (e) => {
     e.preventDefault();
 
@@ -43,7 +49,11 @@ export default function SignUp() {
     };
 
     createUser(userInformation)
-      .then(() => console.log("Successfully posted"))
+      .then(() => {
+        getUserID(userInformation.email).then((response) =>
+          console.log(response.data)
+        );
+      })
       .catch((err) => console.log(err.message));
   };
 
