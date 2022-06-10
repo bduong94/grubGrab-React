@@ -4,6 +4,7 @@ import MenuItemList from "./MenuItemList";
 import Navbar from "./Navbar";
 import axios from "axios";
 import SignUp from "./SignUp";
+import { useCookies } from "react-cookie";
 
 const testData = [
   {
@@ -48,6 +49,7 @@ export default function Application(props) {
   //Setters
   const [menuItems, setMenuItems] = useState([]);
   const [currentUser, setCurrentUser] = useState();
+  const [cookies, setCookie] = useCookies();
 
   //Helper Functions
   const getMenuItems = async () => {
