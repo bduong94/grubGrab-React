@@ -47,11 +47,11 @@ const testData = [
 export default function Application(props) {
   //Setters
   const [menuItems, setMenuItems] = useState([]);
+  const [currentUser, setCurrentUser] = useState();
 
   //Helper Functions
   const getMenuItems = async () => {
     const menuItems = await axios.get("http://localhost:8080/api/menu_items");
-
     return menuItems;
   };
 
