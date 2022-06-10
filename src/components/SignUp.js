@@ -57,7 +57,7 @@ export default function SignUp() {
         novalidate
       >
         <div className="col-md-4">
-          <label for="signup-email" className="form-label">
+          <label htmlFor="signup-email" className="form-label">
             Email
           </label>
           <input
@@ -69,7 +69,7 @@ export default function SignUp() {
           <div className="valid-feedback">Looks good!</div>
         </div>
         <div className="col-md-4">
-          <label for="signup-password" className="form-label">
+          <label htmlFor="signup-password" className="form-label">
             Password
           </label>
           <input
@@ -81,7 +81,7 @@ export default function SignUp() {
           <div className="valid-feedback">Looks good!</div>
         </div>
         <div className="col-md-4">
-          <label for="signup-name" className="form-label">
+          <label htmlFor="signup-name" className="form-label">
             Name
           </label>
           <input
@@ -93,7 +93,7 @@ export default function SignUp() {
           <div className="valid-feedback">Looks good!</div>
         </div>
         <div className="col-md-4">
-          <label for="signup-surname" className="form-label">
+          <label htmlFor="signup-surname" className="form-label">
             Surname
           </label>
           <input
@@ -105,7 +105,7 @@ export default function SignUp() {
           <div className="valid-feedback">Looks good!</div>
         </div>
         <div className="col-md-4">
-          <label for="signup-phone-number" className="form-label">
+          <label htmlFor="signup-phone-number" className="form-label">
             Phone Number
           </label>
           <input
@@ -117,7 +117,7 @@ export default function SignUp() {
           <div className="valid-feedback">Looks good!</div>
         </div>
         <div className="col-md-6">
-          <label for="signup-address" className="form-label">
+          <label htmlFor="signup-address" className="form-label">
             Address
           </label>
           <input
@@ -131,7 +131,7 @@ export default function SignUp() {
           </div>
         </div>
         <div className="col-md-6">
-          <label for="signup-city" className="form-label">
+          <label htmlFor="signup-city" className="form-label">
             City
           </label>
           <input
@@ -143,7 +143,7 @@ export default function SignUp() {
           <div className="invalid-feedback">Please provide a valid city.</div>
         </div>
         <div className="col-md-3">
-          <label for="signup-province" className="form-label">
+          <label htmlFor="signup-province" className="form-label">
             Province
           </label>
           <select className="form-select" id="signup-province" required>
@@ -157,7 +157,7 @@ export default function SignUp() {
           </div>
         </div>
         <div className="col-md-3">
-          <label for="signup-postal-code" className="form-label">
+          <label htmlFor="signup-postal-code" className="form-label">
             Postal Code
           </label>
           <input

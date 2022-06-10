@@ -68,7 +68,25 @@ exports.findAll = (req, res) => {
   //     });
 };
 
-// Find a single Tests with an id
+exports.getInformation = async (req, res) => {
+  if (!req.body.id) {
+    res.status(400).send({
+      message: "User is not logged in",
+    });
+  }
+
+  await User.findByPk(req.body.id)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occured while finding the user",
+      });
+    });
+};
+
+// Find the user with the given ID
 exports.findOne = (req, res) => {};
 
 // Update a Tests with the speicfic id in the request

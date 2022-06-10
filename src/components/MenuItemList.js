@@ -2,7 +2,6 @@ import React from "react";
 import MenuItem from "./MenuItem";
 
 export default function MenuItemList({ menuItems }) {
-  console.log(menuItems);
   const menuItemsArray = menuItems.map((item) => {
     return (
       <MenuItem

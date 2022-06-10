@@ -49,7 +49,7 @@ export default function Application(props) {
   //Setters
   const [menuItems, setMenuItems] = useState([]);
   const [currentUser, setCurrentUser] = useState();
-  const [cookies, setCookie] = useCookies();
+  const [cookies, setCookie, removeCookie] = useCookies();
 
   //Helper Functions
   const getMenuItems = async () => {
@@ -57,12 +57,30 @@ export default function Application(props) {
     return menuItems;
   };
 
+  const getUserInformation = async () => {
+    const information = await axios.get(
+      `http://localhost:8080/api/${currentUser}`,
+      { id: currentUser }
+    );
+
+    return information;
+  };
+
   useEffect(() => {
+    const userID = cookies.ID;
+
+    if (userID) {
+      setCurrentUser(userID);
+    }
+
     const menuItems = async () => await getMenuItems();
+    const userInformation = async () => await getUserInformation();
 
     menuItems().then((response) => {
       setMenuItems(response.data);
     });
+
+    userInformation().then((response) => console.log(response));
   }, []);
   return (
     <>
