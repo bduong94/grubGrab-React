@@ -69,13 +69,13 @@ exports.findAll = (req, res) => {
 };
 
 exports.getInformation = async (req, res) => {
-  if (!req.body.id) {
+  if (!req.params.id) {
     res.status(400).send({
       message: "User is not logged in",
     });
   }
 
-  await User.findByPk(req.body.id)
+  await User.findByPk(Number(req.params.id))
     .then((data) => {
       res.send(data);
     })

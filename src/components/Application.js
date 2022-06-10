@@ -57,30 +57,32 @@ export default function Application(props) {
     return menuItems;
   };
 
-  const getUserInformation = async () => {
+  const getUserInformation = async (id) => {
     const information = await axios.get(
-      `http://localhost:8080/api/${currentUser}`,
-      { id: currentUser }
+      `http://localhost:8080/api/user/${id}`,
+      { id }
     );
 
     return information;
   };
 
   useEffect(() => {
-    const userID = cookies.ID;
+    const userID = Number(cookies.ID);
 
     if (userID) {
       setCurrentUser(userID);
     }
 
     const menuItems = async () => await getMenuItems();
-    const userInformation = async () => await getUserInformation();
+    const userInformation = async (id) => await getUserInformation(id);
 
     menuItems().then((response) => {
       setMenuItems(response.data);
     });
 
-    userInformation().then((response) => console.log(response));
+    if (userID) {
+      userInformation(userID).then((response) => console.log(response));
+    }
   }, []);
   return (
     <>
