@@ -22,7 +22,6 @@ export default function SignUp() {
   });
 
   //Helper Functions
-
   const createUser = async (userInformation) => {
     await axios.post("http://localhost:8080/api/user", userInformation);
     return;

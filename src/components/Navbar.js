@@ -1,6 +1,7 @@
 import React from "react";
+import Button from "./Button";
 
-export default function Navbar(props) {
+export default function Navbar({ currentUser, logOut }) {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-primary">
@@ -49,6 +50,7 @@ export default function Navbar(props) {
                 <table className="dropdown-menu"></table>
               </li>
             </ul>
+            {currentUser ? <Button message="Log Out" onClick={logOut} /> : null}
           </div>
         </div>
       </nav>

@@ -66,6 +66,11 @@ export default function Application(props) {
     return information;
   };
 
+  const logOut = () => {
+    removeCookie("ID");
+    setCurrentUser(null);
+  };
+
   useEffect(() => {
     const userID = Number(cookies.ID);
 
@@ -86,7 +91,7 @@ export default function Application(props) {
   }, []);
   return (
     <>
-      <Navbar />
+      <Navbar currentUser={currentUser} logOut={logOut} />
       <SignUp />
       <CartItemList />
       <MenuItemList menuItems={menuItems} />
