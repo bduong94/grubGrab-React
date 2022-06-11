@@ -104,13 +104,12 @@ exports.findOne = async (req, res) => {
 // Find the userID
 
 exports.setUser = async (req, res) => {
-  console.log(req.query.email);
   const user = await User.findOne({ where: { email: req.query.email } });
 
   if (user) {
     res.send(user);
   } else {
-    console.log("user not found");
+    console.log("User not found");
   }
 };
 
