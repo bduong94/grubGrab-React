@@ -1,41 +1,15 @@
 import React from "react";
 import axios from "axios";
 import Options from "./Options";
+import { provinces, createUser, getUserID } from "../helpers/signUpHelpers";
 
 export default function SignUp({ setCookie, setCurrentUser }) {
-  const provinces = [
-    "Alberta",
-    "British Columbia",
-    "Manitoba",
-    "New Brunswick",
-    "Newfoundland and Labrador",
-    "Nova Scotia",
-    "Ontario",
-    "Prince Edward Island",
-    "Quebec",
-    "Saskatchewan",
-  ];
-
   //Create Options for Province
   const provinceList = provinces.map((province, index) => {
     return <Options key={index} option={province} />;
   });
 
   //Helper Functions
-  const createUser = async (userInformation) => {
-    await axios.post("http://localhost:8080/api/user", userInformation);
-    return;
-  };
-
-  const getUserID = async (email) => {
-    const params = { email };
-    console.log(params);
-    const userID = await axios.get("http://localhost:8080/api/user/setUser", {
-      params,
-    });
-
-    return userID;
-  };
 
   const submitInformation = (e) => {
     e.preventDefault();
