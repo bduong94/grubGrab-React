@@ -87,8 +87,27 @@ exports.getInformation = async (req, res) => {
 };
 
 // Find the user with the given email
-exports.findOne = (req, res) => {
+exports.findOne = async (req, res) => {
+  console.log(req);
+  console.log(req.body);
   console.log(req.params);
+
+  // const user = await User.findOne({ where: { email: req.params.email } });
+
+  // if (user) {
+  //   console.log("user found");
+  // } else {
+  //   console.log("user not found");
+  // }
+};
+
+// Find the userID
+
+exports.setUser = async (req, res) => {
+  console.log(req);
+  console.log(req.body);
+  console.log(req.params);
+  console.log(req.query);
 };
 
 // Update a Tests with the speicfic id in the request

@@ -28,13 +28,21 @@ export default function SignUp() {
   };
 
   const getUserID = async (email) => {
-    const userID = await axios.get("http://localhost:8080/api/user", { email });
+    const params = { email };
+    console.log(params);
+    const userID = await axios.get("http://localhost:8080/api/user/setUser", {
+      params,
+    });
 
     return userID;
   };
 
   const submitInformation = (e) => {
     e.preventDefault();
+
+    const callCreateUser = async (userInformation) =>
+      await createUser(userInformation);
+    const callGetUserID = async (email) => await getUserID(email);
 
     const userInformation = {
       email: e.target[0].value,
@@ -48,9 +56,9 @@ export default function SignUp() {
       postalCode: e.target[8].value,
     };
 
-    createUser(userInformation)
+    callCreateUser(userInformation)
       .then(() => {
-        getUserID(userInformation.email).then((response) =>
+        callGetUserID(userInformation.email).then((response) =>
           console.log(response.data)
         );
       })

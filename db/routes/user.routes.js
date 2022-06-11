@@ -7,7 +7,7 @@ module.exports = (app) => {
   router.post("/", users.create);
 
   //Login user
-  router.get("/", users.findOne);
+  router.get("/setUser", users.setUser);
 
   //Get User Information
   router.get("/:id", users.getInformation);
