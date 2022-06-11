@@ -47,13 +47,13 @@ export default function SignUp({ setCookie, setCurrentUser }) {
     const userInformation = {
       email: e.target[0].value,
       password: e.target[1].value,
-      name: e.target[2].value,
-      surname: e.target[3].value,
-      phoneNumber: e.target[4].value,
-      address: e.target[5].value,
-      city: e.target[6].value,
-      province: e.target[7].value,
-      postalCode: e.target[8].value,
+      name: e.target[3].value,
+      surname: e.target[4].value,
+      phoneNumber: e.target[5].value,
+      address: e.target[6].value,
+      city: e.target[7].value,
+      province: e.target[8].value,
+      postalCode: e.target[9].value,
     };
 
     callCreateUser(userInformation)
@@ -95,6 +95,18 @@ export default function SignUp({ setCookie, setCurrentUser }) {
             type="password"
             className="form-control"
             id="signup-password"
+            required
+          />
+          <div className="valid-feedback">Looks good!</div>
+        </div>
+        <div className="col-md-4">
+          <label htmlFor="signup-password-confirm" className="form-label">
+            Password Confirmation
+          </label>
+          <input
+            type="password"
+            className="form-control"
+            id="signup-password-confirm"
             required
           />
           <div className="valid-feedback">Looks good!</div>
