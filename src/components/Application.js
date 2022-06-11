@@ -88,13 +88,19 @@ export default function Application(props) {
     if (userID) {
       userInformation(userID).then((response) => console.log(response));
     }
-  }, []);
+  }, [currentUser]);
   return (
     <>
       <Navbar currentUser={currentUser} logOut={logOut} />
-      <SignUp setCookie={setCookie} />
-      <CartItemList />
-      <MenuItemList menuItems={menuItems} />
+
+      {currentUser ? (
+        <>
+          <CartItemList />
+          <MenuItemList menuItems={menuItems} />
+        </>
+      ) : (
+        <SignUp setCookie={setCookie} setCurrentUser={setCurrentUser} />
+      )}
     </>
   );
 }

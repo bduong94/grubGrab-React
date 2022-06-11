@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import Options from "./Options";
 
-export default function SignUp({ setCookie }) {
+export default function SignUp({ setCookie, setCurrentUser }) {
   const provinces = [
     "Alberta",
     "British Columbia",
@@ -61,6 +61,7 @@ export default function SignUp({ setCookie }) {
         callGetUserID(userInformation.email).then((response) => {
           const userID = response.data.id;
           setCookie("ID", userID, { path: "/" });
+          setCurrentUser(userID);
         });
       })
       .catch((err) => console.log(err.message));
