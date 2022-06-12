@@ -9,7 +9,7 @@ import {
 
 export default function SignUp({ setCookie, setCurrentUser }) {
   //States for sign-up inputs
-  const [validEmail, setValidEmail] = useState();
+  const [validEmail, setValidEmail] = useState(true);
 
   //Create Options for Province
   const provinceList = provinces.map((province, index) => {
@@ -61,7 +61,7 @@ export default function SignUp({ setCookie, setCurrentUser }) {
           </label>
           <input
             type="text"
-            className={`form-control ${validEmail}`}
+            className={`form-control ${validEmail ? null : "is-invalid"}`}
             id="signup-email"
           />
           <div className="invalid-feedback">
