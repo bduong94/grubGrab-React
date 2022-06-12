@@ -13,6 +13,8 @@ export default function SignUp({ setCookie, setCurrentUser }) {
   const [userInformation, setUserInformation] = useState();
   const [validEmail, setValidEmail] = useState(true);
   const [validPassword, setValidPassword] = useState(true);
+  const [validPasswordConfirmation, setValidPasswordConfirmation] =
+    useState(true);
 
   //Create Options for Province
   const provinceList = provinces.map((province, index) => {
@@ -66,7 +68,7 @@ export default function SignUp({ setCookie, setCurrentUser }) {
         })
         .catch((err) => console.log(err.message));
     }
-  }, [validEmail, validPassword]);
+  }, [validEmail, validPassword, userInformation]);
 
   return (
     <>
@@ -115,9 +117,8 @@ export default function SignUp({ setCookie, setCurrentUser }) {
             type="password"
             className="form-control"
             id="signup-password-confirm"
-            required
           />
-          <div className="valid-feedback">Looks good!</div>
+          <div className="invalid-feedback">Passwords do not match!</div>
         </div>
         <div className="col-md-4">
           <label htmlFor="signup-name" className="form-label">
