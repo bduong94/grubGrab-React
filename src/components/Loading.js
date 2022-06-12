@@ -9,7 +9,6 @@ export default function Loading(props) {
         aria-valuenow="75"
         aria-valuemin="0"
         aria-valuemax="100"
-        style="width: 75%"
       ></div>
     </div>
   );

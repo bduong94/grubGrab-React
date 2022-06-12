@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import Options from "./Options";
+import Loading from "./Loading";
 import {
   provinces,
   validateEmail,
@@ -239,6 +240,7 @@ export default function SignUp({ setCookie, setCurrentUser }) {
           </button>
         </div>
       </form>
+      <Loading />
     </>
   );
 }
