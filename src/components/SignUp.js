@@ -4,6 +4,7 @@ import {
   provinces,
   validateEmail,
   validatePassword,
+  validatePasswordConfirmation,
   createUser,
   getUserID,
 } from "../helpers/signUpHelpers";
@@ -28,10 +29,12 @@ export default function SignUp({ setCookie, setCurrentUser }) {
     //Reset states
     setValidEmail(true);
     setValidPassword(true);
+    setValidPasswordConfirmation(true);
 
     const information = {
       email: e.target[0].value,
       password: e.target[1].value,
+      validPasswordConfirmation: e.target[2].value,
       name: e.target[3].value,
       surname: e.target[4].value,
       phoneNumber: e.target[5].value,
@@ -50,6 +53,15 @@ export default function SignUp({ setCookie, setCurrentUser }) {
     if (!validatePassword(information.password)) {
       setValidPassword(false);
     }
+
+    if (
+      !validatePasswordConfirmation(
+        information.password,
+        information.validPasswordConfirmation
+      )
+    ) {
+      setValidPasswordConfirmation(false);
+    }
   };
 
   useEffect(() => {
@@ -57,7 +69,12 @@ export default function SignUp({ setCookie, setCurrentUser }) {
       await createUser(userInformation);
     const callGetUserID = async (email) => await getUserID(email);
 
-    if (validEmail && validPassword && userInformation) {
+    if (
+      validEmail &&
+      validPassword &&
+      validPasswordConfirmation &&
+      userInformation
+    ) {
       callCreateUser(userInformation)
         .then(() => {
           callGetUserID(userInformation.email).then((response) => {
@@ -68,7 +85,7 @@ export default function SignUp({ setCookie, setCurrentUser }) {
         })
         .catch((err) => console.log(err.message));
     }
-  }, [validEmail, validPassword, userInformation]);
+  }, [validEmail, validPassword, validPasswordConfirmation, userInformation]);
 
   return (
     <>
@@ -115,7 +132,9 @@ export default function SignUp({ setCookie, setCurrentUser }) {
           </label>
           <input
             type="password"
-            className="form-control"
+            className={`form-control ${
+              validPasswordConfirmation ? null : "is-invalid"
+            }`}
             id="signup-password-confirm"
           />
           <div className="invalid-feedback">Passwords do not match!</div>

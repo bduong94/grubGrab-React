@@ -27,6 +27,13 @@ export const validatePassword = (password) => {
   return validatePassword;
 };
 
+export const validatePasswordConfirmation = (
+  password,
+  passwordConfirmation
+) => {
+  return password === passwordConfirmation;
+};
+
 //API Calls
 export const createUser = async (userInformation) => {
   await axios.post("http://localhost:8080/api/user", userInformation);
