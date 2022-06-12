@@ -20,6 +20,9 @@ export default function SignUp({ setCookie, setCurrentUser }) {
   const submitInformation = (e) => {
     e.preventDefault();
 
+    //Reset states
+    setValidEmail(true);
+
     const callCreateUser = async (userInformation) =>
       await createUser(userInformation);
     const callGetUserID = async (email) => await getUserID(email);
@@ -36,15 +39,19 @@ export default function SignUp({ setCookie, setCurrentUser }) {
       postalCode: e.target[9].value,
     };
 
-    callCreateUser(userInformation)
-      .then(() => {
-        callGetUserID(userInformation.email).then((response) => {
-          const userID = response.data.id;
-          setCookie("ID", userID, { path: "/" });
-          setCurrentUser(userID);
-        });
-      })
-      .catch((err) => console.log(err.message));
+    if (validateEmail(userInformation.email)) {
+      callCreateUser(userInformation)
+        .then(() => {
+          callGetUserID(userInformation.email).then((response) => {
+            const userID = response.data.id;
+            setCookie("ID", userID, { path: "/" });
+            setCurrentUser(userID);
+          });
+        })
+        .catch((err) => console.log(err.message));
+    } else {
+      setValidEmail(false);
+    }
   };
 
   return (
