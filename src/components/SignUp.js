@@ -3,6 +3,7 @@ import Options from "./Options";
 import {
   provinces,
   validateEmail,
+  validatePassword,
   createUser,
   getUserID,
 } from "../helpers/signUpHelpers";
@@ -10,6 +11,7 @@ import {
 export default function SignUp({ setCookie, setCurrentUser }) {
   //States for sign-up inputs
   const [validEmail, setValidEmail] = useState(true);
+  const [validPassword, setValidPassword] = useState(true);
 
   //Create Options for Province
   const provinceList = provinces.map((province, index) => {
@@ -22,6 +24,7 @@ export default function SignUp({ setCookie, setCurrentUser }) {
 
     //Reset states
     setValidEmail(true);
+    setValidPassword(true);
 
     const callCreateUser = async (userInformation) =>
       await createUser(userInformation);
@@ -39,7 +42,15 @@ export default function SignUp({ setCookie, setCurrentUser }) {
       postalCode: e.target[9].value,
     };
 
-    if (validateEmail(userInformation.email)) {
+    if (!validateEmail(userInformation.email)) {
+      setValidEmail(false);
+    }
+
+    if (!validatePassword(userInformation.password)) {
+      setValidPassword(false);
+    }
+
+    if (validEmail && validPassword) {
       callCreateUser(userInformation)
         .then(() => {
           callGetUserID(userInformation.email).then((response) => {
@@ -49,8 +60,6 @@ export default function SignUp({ setCookie, setCurrentUser }) {
           });
         })
         .catch((err) => console.log(err.message));
-    } else {
-      setValidEmail(false);
     }
   };
 
@@ -81,11 +90,17 @@ export default function SignUp({ setCookie, setCurrentUser }) {
           </label>
           <input
             type="password"
-            className="form-control"
+            className={`form-control ${validEmail ? null : "is-invalid"}`}
             id="signup-password"
-            required
           />
-          <div className="valid-feedback">Looks good!</div>
+          <div className="invalid-feedback">
+            Password must include:
+            <li>
+              <ul>Be at least 8 characters long</ul>
+              <ul>Upper and lower cases</ul>
+              <ul>Letters and numbers</ul>
+            </li>
+          </div>
         </div>
         <div className="col-md-4">
           <label htmlFor="signup-password-confirm" className="form-label">

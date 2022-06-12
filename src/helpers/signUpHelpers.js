@@ -19,6 +19,14 @@ export const validateEmail = (email) => {
   return email.includes("@");
 };
 
+export const validatePassword = (password) => {
+  const upper = /[A-Z]/.test(password);
+  const lower = /[a-z]/.test(password);
+  const length = password.length >= 8;
+
+  return upper && lower;
+};
+
 //API Calls
 export const createUser = async (userInformation) => {
   await axios.post("http://localhost:8080/api/user", userInformation);
