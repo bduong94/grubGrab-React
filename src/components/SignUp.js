@@ -16,6 +16,7 @@ export default function SignUp({ setCookie, setCurrentUser }) {
   const [validPassword, setValidPassword] = useState(true);
   const [validPasswordConfirmation, setValidPasswordConfirmation] =
     useState(true);
+  const [loading, setLoading] = useState(false);
 
   //Create Options for Province
   const provinceList = provinces.map((province, index) => {
