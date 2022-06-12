@@ -15,8 +15,16 @@ export const provinces = [
 ];
 
 //Input Validations
-export const validateEmail = (email) => {
-  return email.includes("@");
+export const validateEmail = async (email) => {
+  const validEmailFormat = email.includes("@");
+  const userInformation = await getUserInformation(email);
+  const userID = userInformation.data.id;
+
+  if (!Number.isInteger(userID)) {
+    return validEmailFormat;
+  } else {
+    return false;
+  }
 };
 
 export const validatePassword = (password) => {
@@ -40,12 +48,15 @@ export const createUser = async (userInformation) => {
   return;
 };
 
-export const getUserID = async (email) => {
+export const getUserInformation = async (email) => {
   const params = { email };
   console.log(params);
-  const userID = await axios.get("http://localhost:8080/api/user/setUser", {
-    params,
-  });
+  const userInformation = await axios.get(
+    "http://localhost:8080/api/user/setUser",
+    {
+      params,
+    }
+  );
 
-  return userID;
+  return userInformation;
 };

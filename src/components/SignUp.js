@@ -6,7 +6,7 @@ import {
   validatePassword,
   validatePasswordConfirmation,
   createUser,
-  getUserID,
+  getUserInformation,
 } from "../helpers/signUpHelpers";
 
 export default function SignUp({ setCookie, setCurrentUser }) {
@@ -23,7 +23,7 @@ export default function SignUp({ setCookie, setCurrentUser }) {
   });
 
   //Helper Functions
-  const submitInformation = (e) => {
+  const submitInformation = async (e) => {
     e.preventDefault();
 
     //Reset states
@@ -46,10 +46,6 @@ export default function SignUp({ setCookie, setCurrentUser }) {
 
     setUserInformation(information);
 
-    if (!validateEmail(information.email)) {
-      setValidEmail(false);
-    }
-
     if (!validatePassword(information.password)) {
       setValidPassword(false);
     }
@@ -62,12 +58,19 @@ export default function SignUp({ setCookie, setCurrentUser }) {
     ) {
       setValidPasswordConfirmation(false);
     }
+
+    const verifyEmail = await validateEmail(information.email);
+
+    if (!verifyEmail) {
+      setValidEmail(false);
+    }
   };
 
   useEffect(() => {
     const callCreateUser = async (userInformation) =>
       await createUser(userInformation);
-    const callGetUserID = async (email) => await getUserID(email);
+    const callGetUserInformation = async (email) =>
+      await getUserInformation(email);
 
     if (
       validEmail &&
@@ -77,7 +80,7 @@ export default function SignUp({ setCookie, setCurrentUser }) {
     ) {
       callCreateUser(userInformation)
         .then(() => {
-          callGetUserID(userInformation.email).then((response) => {
+          callGetUserInformation(userInformation.email).then((response) => {
             const userID = response.data.id;
             setCookie("ID", userID, { path: "/" });
             setCurrentUser(userID);
@@ -105,7 +108,7 @@ export default function SignUp({ setCookie, setCurrentUser }) {
             id="signup-email"
           />
           <div className="invalid-feedback">
-            Email exists or cannot be used.
+            Email already exists or cannot be used.
           </div>
         </div>
         <div className="col-md-4">
