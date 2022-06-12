@@ -20,11 +20,11 @@ export const validateEmail = (email) => {
 };
 
 export const validatePassword = (password) => {
-  const upper = /[A-Z]/.test(password);
-  const lower = /[a-z]/.test(password);
-  const length = password.length >= 8;
+  const validatePassword = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/.test(
+    password
+  );
 
-  return upper && lower;
+  return validatePassword;
 };
 
 //API Calls

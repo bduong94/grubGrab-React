@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import Options from "./Options";
 import {
   provinces,
@@ -10,6 +10,7 @@ import {
 
 export default function SignUp({ setCookie, setCurrentUser }) {
   //States for sign-up inputs
+  const [userInformation, setUserInformation] = useState();
   const [validEmail, setValidEmail] = useState(true);
   const [validPassword, setValidPassword] = useState(true);
 
@@ -26,11 +27,7 @@ export default function SignUp({ setCookie, setCurrentUser }) {
     setValidEmail(true);
     setValidPassword(true);
 
-    const callCreateUser = async (userInformation) =>
-      await createUser(userInformation);
-    const callGetUserID = async (email) => await getUserID(email);
-
-    const userInformation = {
+    const information = {
       email: e.target[0].value,
       password: e.target[1].value,
       name: e.target[3].value,
@@ -42,15 +39,23 @@ export default function SignUp({ setCookie, setCurrentUser }) {
       postalCode: e.target[9].value,
     };
 
-    if (!validateEmail(userInformation.email)) {
+    setUserInformation(information);
+
+    if (!validateEmail(information.email)) {
       setValidEmail(false);
     }
 
-    if (!validatePassword(userInformation.password)) {
+    if (!validatePassword(information.password)) {
       setValidPassword(false);
     }
+  };
 
-    if (validEmail && validPassword) {
+  useEffect(() => {
+    const callCreateUser = async (userInformation) =>
+      await createUser(userInformation);
+    const callGetUserID = async (email) => await getUserID(email);
+
+    if (validEmail && validPassword && userInformation) {
       callCreateUser(userInformation)
         .then(() => {
           callGetUserID(userInformation.email).then((response) => {
@@ -61,7 +66,7 @@ export default function SignUp({ setCookie, setCurrentUser }) {
         })
         .catch((err) => console.log(err.message));
     }
-  };
+  }, [validEmail, validPassword]);
 
   return (
     <>
@@ -90,16 +95,16 @@ export default function SignUp({ setCookie, setCurrentUser }) {
           </label>
           <input
             type="password"
-            className={`form-control ${validEmail ? null : "is-invalid"}`}
+            className={`form-control ${validPassword ? null : "is-invalid"}`}
             id="signup-password"
           />
           <div className="invalid-feedback">
-            Password must include:
-            <li>
-              <ul>Be at least 8 characters long</ul>
-              <ul>Upper and lower cases</ul>
-              <ul>Letters and numbers</ul>
-            </li>
+            Password must:
+            <ul>
+              <li>Be at least 8 characters long</li>
+              <li>Include upper and lower cases</li>
+              <li>Have letters and numbers</li>
+            </ul>
           </div>
         </div>
         <div className="col-md-4">
