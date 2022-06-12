@@ -1,16 +1,22 @@
-import React from "react";
-import axios from "axios";
+import { React, useState } from "react";
 import Options from "./Options";
-import { provinces, createUser, getUserID } from "../helpers/signUpHelpers";
+import {
+  provinces,
+  validateEmail,
+  createUser,
+  getUserID,
+} from "../helpers/signUpHelpers";
 
 export default function SignUp({ setCookie, setCurrentUser }) {
+  //States for sign-up inputs
+  const [validEmail, setValidEmail] = useState();
+
   //Create Options for Province
   const provinceList = provinces.map((province, index) => {
     return <Options key={index} option={province} />;
   });
 
   //Helper Functions
-
   const submitInformation = (e) => {
     e.preventDefault();
 
@@ -55,11 +61,12 @@ export default function SignUp({ setCookie, setCurrentUser }) {
           </label>
           <input
             type="text"
-            className="form-control"
+            className={`form-control ${validEmail}`}
             id="signup-email"
-            required
           />
-          <div className="valid-feedback">Looks good!</div>
+          <div className="invalid-feedback">
+            Email exists or cannot be used.
+          </div>
         </div>
         <div className="col-md-4">
           <label htmlFor="signup-password" className="form-label">
