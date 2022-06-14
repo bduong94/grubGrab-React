@@ -109,6 +109,7 @@ exports.setUser = async (req, res) => {
   if (user) {
     res.send(user);
   } else {
+    res.send(user);
     console.log("User not found");
   }
 };

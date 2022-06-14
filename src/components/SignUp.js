@@ -29,10 +29,6 @@ export default function SignUp({ setCookie, setCurrentUser }) {
     e.preventDefault();
 
     //Reset states
-    setValidEmail(true);
-    setValidPassword(true);
-    setValidPasswordConfirmation(true);
-
     const information = {
       email: e.target[0].value,
       password: e.target[1].value,
@@ -46,10 +42,22 @@ export default function SignUp({ setCookie, setCurrentUser }) {
       postalCode: e.target[9].value,
     };
 
-    setUserInformation(information);
+    await validateEmail(information.email).then((response) => {
+      console.log(response);
+    });
+
+    // if (!verifyEmail) {
+    //   console.log("Failed Test");
+    //   setValidEmail(false);
+    // } else {
+    //   console.log("Passed Test");
+    //   setValidEmail(true);
+    // }
 
     if (!validatePassword(information.password)) {
       setValidPassword(false);
+    } else {
+      setValidPassword(true);
     }
 
     if (
@@ -59,13 +67,11 @@ export default function SignUp({ setCookie, setCurrentUser }) {
       )
     ) {
       setValidPasswordConfirmation(false);
+    } else {
+      setValidPasswordConfirmation(true);
     }
 
-    const verifyEmail = await validateEmail(information.email);
-
-    if (!verifyEmail) {
-      setValidEmail(false);
-    }
+    setUserInformation(information);
   };
 
   useEffect(() => {
