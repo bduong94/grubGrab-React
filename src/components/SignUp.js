@@ -3,6 +3,7 @@ import Options from "./Options";
 import Loading from "./Loading";
 import {
   provinces,
+  validateEmail,
   validatePassword,
   validatePasswordConfirmation,
   createUser,
@@ -22,38 +23,6 @@ export default function SignUp({ setCookie, setCurrentUser }) {
   const provinceList = provinces.map((province, index) => {
     return <Options key={index} option={province} />;
   });
-
-  const validateEmail = async (email) => {
-    // getUserInformation(email).then((response) => {
-    //   const userID = response.data.id;
-    //   const validEmailFormat = email.includes("@");
-    //   console.log("Helper:", userID);
-    //   console.log("Helper:", !Number.isInteger(userID));
-    //   console.log("Helper:", validEmailFormat);
-
-    //   if (!Number.isInteger(userID)) {
-    //     console.log("Helper: Passed");
-    //     return validEmailFormat;
-    //   } else {
-    //     return false;
-    //   }
-    // });
-
-    const userInfo = await getUserInformation(email);
-    const userID = userInfo.data.id;
-    const validEmailFormat = email.includes("@");
-
-    console.log("Helper:", userID);
-    console.log("Helper:", !Number.isInteger(userID));
-    console.log("Helper:", validEmailFormat);
-
-    if (!Number.isInteger(userID)) {
-      console.log("Helper: Passed");
-      return validEmailFormat;
-    } else {
-      return false;
-    }
-  };
 
   //Helper Functions
   const submitInformation = async (e) => {
