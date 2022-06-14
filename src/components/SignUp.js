@@ -3,7 +3,6 @@ import Options from "./Options";
 import Loading from "./Loading";
 import {
   provinces,
-  validateEmail,
   validatePassword,
   validatePasswordConfirmation,
   createUser,
@@ -24,6 +23,38 @@ export default function SignUp({ setCookie, setCurrentUser }) {
     return <Options key={index} option={province} />;
   });
 
+  const validateEmail = async (email) => {
+    // getUserInformation(email).then((response) => {
+    //   const userID = response.data.id;
+    //   const validEmailFormat = email.includes("@");
+    //   console.log("Helper:", userID);
+    //   console.log("Helper:", !Number.isInteger(userID));
+    //   console.log("Helper:", validEmailFormat);
+
+    //   if (!Number.isInteger(userID)) {
+    //     console.log("Helper: Passed");
+    //     return validEmailFormat;
+    //   } else {
+    //     return false;
+    //   }
+    // });
+
+    const userInfo = await getUserInformation(email);
+    const userID = userInfo.data.id;
+    const validEmailFormat = email.includes("@");
+
+    console.log("Helper:", userID);
+    console.log("Helper:", !Number.isInteger(userID));
+    console.log("Helper:", validEmailFormat);
+
+    if (!Number.isInteger(userID)) {
+      console.log("Helper: Passed");
+      return validEmailFormat;
+    } else {
+      return false;
+    }
+  };
+
   //Helper Functions
   const submitInformation = async (e) => {
     e.preventDefault();
@@ -42,17 +73,16 @@ export default function SignUp({ setCookie, setCurrentUser }) {
       postalCode: e.target[9].value,
     };
 
-    await validateEmail(information.email).then((response) => {
-      console.log(response);
-    });
+    console.log(await validateEmail(information.email));
+    const verifyEmail = await validateEmail(information.email);
 
-    // if (!verifyEmail) {
-    //   console.log("Failed Test");
-    //   setValidEmail(false);
-    // } else {
-    //   console.log("Passed Test");
-    //   setValidEmail(true);
-    // }
+    if (!verifyEmail) {
+      console.log("Failed Test");
+      setValidEmail(false);
+    } else {
+      console.log("Passed Test");
+      setValidEmail(true);
+    }
 
     if (!validatePassword(information.password)) {
       setValidPassword(false);

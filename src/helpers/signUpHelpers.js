@@ -15,22 +15,22 @@ export const provinces = [
 ];
 
 //Input Validations
-export const validateEmail = async (email) => {
-  getUserInformation(email).then((response) => {
-    const userID = response.data.id;
-    const validEmailFormat = email.includes("@");
-    console.log("Helper:", userID);
-    console.log("Helper:", !Number.isInteger(userID));
-    console.log("Helper:", validEmailFormat);
+// export const validateEmail = async (email) => {
+//   getUserInformation(email).then((response) => {
+//     const userID = response.data.id;
+//     const validEmailFormat = email.includes("@");
+//     console.log("Helper:", userID);
+//     console.log("Helper:", !Number.isInteger(userID));
+//     console.log("Helper:", validEmailFormat);
 
-    if (!Number.isInteger(userID)) {
-      console.log("Helper: Passed");
-      return validEmailFormat;
-    } else {
-      return false;
-    }
-  });
-};
+//     if (!Number.isInteger(userID)) {
+//       console.log("Helper: Passed");
+//       return "validEmailFormat";
+//     } else {
+//       return false;
+//     }
+//   });
+// };
 
 export const validatePassword = (password) => {
   const validatePassword = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/.test(
