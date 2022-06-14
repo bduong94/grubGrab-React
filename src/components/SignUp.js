@@ -42,14 +42,11 @@ export default function SignUp({ setCookie, setCurrentUser }) {
       postalCode: e.target[9].value,
     };
 
-    console.log(await validateEmail(information.email));
     const verifyEmail = await validateEmail(information.email);
 
     if (!verifyEmail) {
-      console.log("Failed Test");
       setValidEmail(false);
     } else {
-      console.log("Passed Test");
       setValidEmail(true);
     }
 

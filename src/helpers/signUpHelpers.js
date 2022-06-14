@@ -20,12 +20,7 @@ export const validateEmail = async (email) => {
   const userID = userInfo.data.id;
   const validEmailFormat = email.includes("@");
 
-  console.log("Helper:", userID);
-  console.log("Helper:", !Number.isInteger(userID));
-  console.log("Helper:", validEmailFormat);
-
   if (!Number.isInteger(userID)) {
-    console.log("Helper: Passed");
     return validEmailFormat;
   } else {
     return false;
