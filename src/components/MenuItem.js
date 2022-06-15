@@ -22,7 +22,6 @@ export default function MenuItem({ name, price, description, image_url }) {
     const validInput = numArray.indexOf(Number(e.key)) !== -1;
 
     if (validInput || e.key === "Backspace") {
-      console.log("Passes");
     } else {
       e.preventDefault();
     }

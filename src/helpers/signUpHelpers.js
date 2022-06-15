@@ -59,3 +59,7 @@ export const getUserInformation = async (email) => {
 
   return userInformation;
 };
+
+export const blankInputVerification = (input) => {
+  return input.trim() === "";
+};

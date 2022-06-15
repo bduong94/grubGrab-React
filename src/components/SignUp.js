@@ -8,6 +8,7 @@ import {
   validatePasswordConfirmation,
   createUser,
   getUserInformation,
+  blankInputVerification,
 } from "../helpers/signUpHelpers";
 
 export default function SignUp({ setCookie, setCurrentUser }) {
@@ -17,6 +18,7 @@ export default function SignUp({ setCookie, setCurrentUser }) {
   const [validPassword, setValidPassword] = useState(true);
   const [validPasswordConfirmation, setValidPasswordConfirmation] =
     useState(true);
+  const [validName, setValidName] = useState(true);
   const [loading, setLoading] = useState(false);
 
   //Create Options for Province
@@ -67,6 +69,12 @@ export default function SignUp({ setCookie, setCurrentUser }) {
       setValidPasswordConfirmation(true);
     }
 
+    if (blankInputVerification(information.name)) {
+      setValidName(false);
+    } else {
+      setValidName(true);
+    }
+
     setUserInformation(information);
   };
 
@@ -80,6 +88,7 @@ export default function SignUp({ setCookie, setCurrentUser }) {
       validEmail &&
       validPassword &&
       validPasswordConfirmation &&
+      validName &&
       userInformation
     ) {
       callCreateUser(userInformation)
@@ -152,11 +161,11 @@ export default function SignUp({ setCookie, setCurrentUser }) {
           </label>
           <input
             type="text"
-            className="form-control"
+            className={`form-control ${validName ? null : "is-invalid"}`}
             id="signup-name"
             required
           />
-          <div className="valid-feedback">Looks good!</div>
+          <div className="invalid-feedback">Looks good!</div>
         </div>
         <div className="col-md-4">
           <label htmlFor="signup-surname" className="form-label">
